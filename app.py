@@ -25,8 +25,6 @@ line_bot_api = LineBotApi('your_api_key')
 # 必須放上自己的Channel Secret
 handler = WebhookHandler('your_token')
 
-#line_bot_api.push_message('Uc11e2f0ebc9a2ca445c73f8c698f88f2', TextSendMessage(text='您好！我是南山萬事通，很高興認識你～我可以幫助你得到南山人壽相關資訊喔！'))
-
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -160,13 +158,6 @@ def handle_message(event):
             )
         line_bot_api.push_message(uid, message)
         return 0 
-   
-#    if re.search('商品|product', event.message.text, re.IGNORECASE):
-#        text = '商品資訊如下：' + '\n' + 'https://www.nanshanlife.com.tw/NanshanWeb/static-sidebar/8'
-#        line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=text))
-#        return 0 
     
     elif re.search('商品|product', event.message.text, re.IGNORECASE):
         message = TemplateSendMessage(
@@ -188,10 +179,6 @@ def handle_message(event):
                         label='醫療保障',
                         uri='https://www.nanshanlife.com.tw/NanshanWeb/product/24'
                     ),
-#                    URITemplateAction(
-#                        label='旅行險專區',
-#                        uri='https://www.nanshanlife.com.tw/promotion/travel/index.htm'
-#                    ),      
                     URITemplateAction(
                         label='投資型商品專區',
                         uri='http://ilp.nanshanlife.com.tw/'
@@ -204,7 +191,6 @@ def handle_message(event):
         return 0 
     
     elif re.search('常見問題|QA|qa', event.message.text, re.IGNORECASE):
-#        text = 'https://www.nanshanlife.com.tw/NanshanWeb/static-sidebar/347'
         message = TemplateSendMessage(
             alt_text='Carousel template',
             template=CarouselTemplate(
@@ -288,9 +274,7 @@ def handle_message(event):
     else:
         message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token,message)
-#    line_bot_api.reply_message(
-#        event.reply_token,
-#        TextSendMessage(text=event.message.text))
+
     return 0 
 #主程式
 import os

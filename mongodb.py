@@ -13,10 +13,10 @@ import pandas as pd
 
 
 # db setting
-host = 'ds131932.mlab.com'
-port = '31932'
+host = 'your_host'
+port = 'port_number'
 username = urllib.parse.quote_plus('chatbot')
-password = urllib.parse.quote_plus('test321')
+password = urllib.parse.quote_plus('your_pwd')
 # Authentication Database
 Authdb='zinobotdb'
 
